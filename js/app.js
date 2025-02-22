@@ -1,30 +1,37 @@
-let ingresos = [Quincena= 9000,
-    Venta= 400];
-let egresos = [Renta=900,
-    Ropa=400];
+const ingresos = [
+  new Ingreso('Salario', 2200),
+  new Ingreso('Venta auto', 1500)
+];
+
+const egresos = [
+  new Egreso('Renta', 900),
+  new Egreso('Ropa', 400)
+];
 
 
 
-const totalIngresos = () => {
+let totalIngresos = () => {
   let totalIngresos = 0;
   for (let ingreso of ingresos) {
-    totalIngresos += ingreso;
+    totalIngresos += ingreso.valor;
   }
   return totalIngresos;
 };
 
 
-const totalEgresos = () => {
+let totalEgresos = () => {
   let totalEgresos = 0;
   for (let egreso of egresos) {
-    totalEgresos += egreso;
+    totalEgresos += egreso.valor;
   }
   return totalEgresos;
 };
 
+let cargarCabecero = () => {
+  let presupuesto = totalIngresos() - totalEgresos();
+  let porcentajeEgreso = totalEgresos() / totalIngresos();
 
-
-const formatoMoneda = (valor) => {
+let formatoMoneda = (valor) => {
     return valor.toLocaleString('es-MX', {
       style: 'currency',
       currency: 'MXN',
@@ -32,16 +39,13 @@ const formatoMoneda = (valor) => {
     });
 };
 
-const formatoPorcentaje = (valor) => {
+let formatoPorcentaje = (valor) => {
     return valor.toLocaleString('es-MX', {
       style: 'percent',
       minimumFractionDigits: 2
     });
 };
 
-const cargarCabecero = () => {
-    let presupuesto = totalIngresos() - totalEgresos();
-    let porcentajeEgreso = totalEgresos() / totalIngresos();
   
     console.log(`Presupuesto: ${formatoMoneda(presupuesto)}`);
     console.log(`Porcentaje de Egreso: ${formatoPorcentaje(porcentajeEgreso)}`);
@@ -51,6 +55,3 @@ const cargarCabecero = () => {
   
   
   cargarCabecero();
-
-
-  

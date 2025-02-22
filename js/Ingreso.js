@@ -1,6 +1,3 @@
-import Dato from './Dato.js'
-const Dato = require('./Dato');
-
 class Ingreso extends Dato {
     static contadorIngresos = 0;
 
